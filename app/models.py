@@ -2,14 +2,13 @@ from django.db import models
 from django.utils import timezone
 import uuid
 from django.contrib.auth.models import AbstractUser
-from django.db.models.constraints import UniqueConstraint
 from .managers import UserManager
 
 
 class BaseModel(models.Model):
 
     uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
-    created_at = models.DateTimeField(default=timezone)
+    created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(null=True)
     deleted_at = models.DateField(null=True)
 
