@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-from rest_framework.serializers import ValidationError
 from .models import Aircraft, Airport, Location
 from .serializers import AirCraftSerializer, AirportSerializer, FlightSerializer, LocationSerializer
 
@@ -161,4 +160,3 @@ class SerializerTest(TestCase):
         ser.save()
         ser2.save()
        
-

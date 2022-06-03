@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     
     # installed Apps
     'django_nose',
+    'rest_framework',
+    
     # Project Apps
     'app'
 ]
