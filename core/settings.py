@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from datetime import timedelta
 
 load_dotenv()
 
@@ -25,7 +26,7 @@ INSTALLED_APPS = [
     # installed Apps
     'django_nose',
     'rest_framework',
-    
+
     # Project Apps
     'app'
 ]
@@ -78,6 +79,20 @@ DATABASES = {
         'HOST': os.getenv("DB_HOST"),
         'PORT': os.getenv("DB_PORT")
     },
+}
+
+USER_ID_FIELD = "uid"
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
+    "USER_ID_FIELD": "uid",
 }
 
 
