@@ -47,12 +47,12 @@ class Location(models.Model):
 class Airport(BaseModel):
 
     name = models.CharField(max_length=100)
-    icao = models.CharField(max_length=10)
+    icao = models.CharField(max_length=10, unique=True)
     location = models.OneToOneField(Location, on_delete=models.SET_NULL, null=True)
 
 class Aircraft(BaseModel):
 
-    serial_number = models.CharField(max_length=100)
+    serial_number = models.CharField(max_length=100, unique=True)
     manufacturer = models.TextField()
 
 class Flight(BaseModel):
@@ -69,7 +69,7 @@ class Flight(BaseModel):
     arrival = models.ForeignKey(Airport, on_delete=models.DO_NOTHING, related_name="flight_arrivals")
     departure_dt = models.DateTimeField()
     arrival_dt = models.DateTimeField()
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="pending")
 
     
 
