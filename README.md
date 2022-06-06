@@ -621,3 +621,32 @@ DELETE /api/flight/:uid/
     "message": "Deleted"
 }
 ```
+
+## Flight Search
+
+Search Flight By departure, arrival and departure time range
+
+### Authorization: Bearer Auth e.g `Bearer <jwt_access_token>`
+
+### QUERY PARAMS
+| Field Name | Data Type | Required |
+| :--- | :--- | :--- |
+| dept | `string` | `No`
+| arr | `string` | `No`
+| dept_rng | `time range string` | `No`
+
+### Search By Arrival Airport ICAO code
+```http
+GET /api/flight/search/?arr=1ec9
+```
+
+### Search By Departure Airport ICAO code
+```http
+GET /api/flight/search/?dept=1ec9
+```
+
+### Search By Departure Time Range
+```http
+GET /api/flight/search/?dept_rng=10:30;2:30
+```
+
