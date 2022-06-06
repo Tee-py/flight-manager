@@ -243,7 +243,7 @@ def departure_search(request):
             {"status": False, "message": "Invalid interval"},
             status.HTTP_400_BAD_REQUEST,
         )
-    query = Q(departure_dt__gte=dept_dt) & Q(arrival_dt__lte=arr_dt)
+    query = Q(departure_dt__gte=dept_dt) & Q(departure_dt__lte=arr_dt)
     departures = (
         Flight.objects.select_related("departure").filter(query).distinct("departure")
     )

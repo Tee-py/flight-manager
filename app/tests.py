@@ -21,7 +21,7 @@ class UtilsTest(TestCase):
         val2 = "20-60-05 17:22"
         val3 = "hello"
         res = format_datetime_str(val1)
-        self.assertEqual(res, datetime(2022, 6, 5, 17, 22))
+        self.assertEqual(res, timezone.make_aware(datetime(2022, 6, 5, 17, 22)))
         with self.assertRaises(ValueError):
             format_datetime_str(val2)
         with self.assertRaises(ValueError):
@@ -341,4 +341,14 @@ class APITest(APITestCase):
             Flight.objects.get(uid=flight.uid)
 
     def test_flight_search(self):
-        pass
+        by_arrival = "/api/flight/search/?arr=1ec4"
+        by_dept = "/api/flight/search/?dept=1ec9"
+        by_rng = "/api/flight/search/?dept_rng=17:30;21:30"
+        self.client.login(**self.user_login)
+        resp1 = self.client.get(by_arrival)
+        resp2 = self.client.get(by_dept)
+        resp3 = self.client.get(by_rng)
+
+        self.assertEqual(resp1.status_code, 200)
+        self.assertEqual(resp2.status_code, 200)
+        self.assertEqual(resp3.status_code, 200)

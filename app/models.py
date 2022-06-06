@@ -48,6 +48,9 @@ class Airport(BaseModel):
     icao = models.CharField(max_length=10, unique=True)
     location = models.OneToOneField(Location, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self) -> str:
+        return self.icao
+
 
 class Aircraft(BaseModel):
 
