@@ -12,7 +12,7 @@ Flight and Aircraft Management API written with Django and DjangoRestFramework.
 5. run `python manage.py createsuperuser` to create a superuser.
 ## Locally Without Docker [using sqlite]
 1. Clone the repository.
-2. Run 'cd flight-manager`
+2. Run `cd flight-manager`
 3. create a virtualenvironment and activate.
 4. run `pip install -r requirements.txt`
 5. open the `core/settings.py` file and uncomment the SQLITE DATABASE config to use sqlite.
