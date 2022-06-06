@@ -16,6 +16,12 @@ Flight and Aircraft Management API written with Django and DjangoRestFramework.
 3. create a virtualenvironment and activate.
 4. run `pip install -r requirements.txt`
 5. open the `core/settings.py` file and uncomment the SQLITE DATABASE config to use sqlite.
+6. create a `.env` file and add
+```Javascript
+SECRET_KEY = "dj_secret"
+DEBUG = "TRUE"
+ALLOWED_HOSTS = "*"
+```
 6. run `python manage.py migrate`
 7. run `python manage.py runserver`
 8. To test the code, run `python manage.py test`.
